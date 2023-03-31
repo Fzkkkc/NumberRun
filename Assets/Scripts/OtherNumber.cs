@@ -1,18 +1,26 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
-    public class OtherNumber : MonoBehaviour
+public class OtherNumber : MonoBehaviour
+{
+    public TextMeshPro TextMeshProOtherNumbers;
+    public int NumberOtherNumbers;
+    public bool CanPickUp;
+    public Color ColorOtherNumbers;
+    private static List<OtherNumber> _allOtherNumbers = new List<OtherNumber>();
+
+    private void Start()
     {
-        public TextMeshPro TextMeshPro;
-        public int Number;
-        public bool CanPickUp;
-        public Color Color;
-
-        private void Start()
-        {
-            TextMeshPro = GetComponent<TextMeshPro>();
-            Number = int.Parse(TextMeshPro.text);
-            CanPickUp = true;
-            Color = new Color(22f / 255f, 0f, 255f / 255f, 1f);
-        }
+        TextMeshProOtherNumbers = GetComponent<TextMeshPro>();
+        NumberOtherNumbers = int.Parse(TextMeshProOtherNumbers.text);
+        CanPickUp = true;
+        ColorOtherNumbers = new Color(22f / 255f, 0f, 255f / 255f, 1f);
+        _allOtherNumbers.Add(this);
     }
+    
+    public static OtherNumber[] GetAllOtherNumbers()
+    {
+        return _allOtherNumbers.ToArray();
+    }
+}

@@ -5,10 +5,17 @@ namespace FollowObjects
     public class FollowerUpdate : MonoBehaviour
     {
         [SerializeField] private float _forwardSpeed = 200f;
+        private ChangeNumber _changeNumber;
+
+        private void Start()
+        {
+            _changeNumber = FindObjectOfType<ChangeNumber>();
+        }
 
         private void Update()
         {
-            MoveForward();
+            if(_changeNumber.IsReducingNumbers == false)
+                MoveForward();
         }
 
         private void MoveForward()

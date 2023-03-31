@@ -10,11 +10,18 @@ namespace Character
 
         private Vector3 _firstPos;
         private Vector3 _endPos;
+        private ChangeNumber _changeNumber;
+
+        private void Start()
+        {
+            _changeNumber = FindObjectOfType<ChangeNumber>();
+        }
 
         private void Update()
         {
             Dragging();
-            MoveForward();
+            if(_changeNumber.IsReducingNumbers == false)
+                MoveForward();
         }
 
         private void Dragging()
