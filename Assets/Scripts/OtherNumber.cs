@@ -4,10 +4,11 @@ using System.Collections.Generic;
 
 public class OtherNumber : MonoBehaviour
 {
-    public TextMeshPro TextMeshProOtherNumbers;
-    public int NumberOtherNumbers;
-    public bool CanPickUp;
-    public Color ColorOtherNumbers;
+    [HideInInspector] public TextMeshPro TextMeshProOtherNumbers;
+    [HideInInspector]public int NumberOtherNumbers;
+    [HideInInspector] public bool CanPickUp;
+    [HideInInspector] public Color ColorOtherNumbers;
+    
     private static List<OtherNumber> _allOtherNumbers = new List<OtherNumber>();
 
     private void Start()

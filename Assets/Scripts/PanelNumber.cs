@@ -3,12 +3,12 @@ using TMPro;
 
 public class PanelNumber : MonoBehaviour
 {
-    public TextMeshPro TextMeshProPanel;
-    public int NumberPanel;
+    [HideInInspector] public TextMeshPro PanelText;
+    [HideInInspector] public int NumberPanel;
 
     private void Start()
     {
-        TextMeshProPanel = GetComponent<TextMeshPro>();
-        NumberPanel = int.Parse(TextMeshProPanel.text);
+        PanelText = GetComponent<TextMeshPro>();
+        NumberPanel = int.Parse(PanelText.text);
     }
 }
