@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class OtherNumber : MonoBehaviour
 {
     [HideInInspector] public TextMeshPro TextMeshProOtherNumbers;
-    [HideInInspector]public int NumberOtherNumbers;
+    [HideInInspector] public int NumberOtherNumbers;
     [HideInInspector] public bool CanPickUp;
     [HideInInspector] public Color ColorOtherNumbers;
     

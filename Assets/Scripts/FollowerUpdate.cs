@@ -1,29 +1,37 @@
-﻿using UnityEngine;
+﻿using Character;
+using UnityEngine;
 
 namespace FollowObjects
 {
     public class FollowerUpdate : MonoBehaviour
     {
-        [SerializeField] private float _forwardSpeed = 400f;
+        [HideInInspector] public float _forwardSpeed = 460f;
+
+        [SerializeField] private MainNumberCollision _mainNumberCollisionController;
+        [SerializeField] private MovementController _movementController;
         
-        private MainNumberCollision _mainNumberCollision;
+        private FollowerUpdate _followerUpdateController;
+
+        public void Initialize(FollowerUpdate followerUpdateController)
+        {
+            _followerUpdateController = followerUpdateController;
+        }
 
         private void Start()
         {
-            _mainNumberCollision = FindObjectOfType<MainNumberCollision>();
+            _mainNumberCollisionController.Initialize(_mainNumberCollisionController);
+            _movementController.Initialize(_movementController);
         }
 
         private void Update()
         {
-            MoveForward();
-
-            if (_mainNumberCollision.IsOnFinishLine)
-                _forwardSpeed = 1200f;
+            if(_movementController._canMove)
+                 MoveForward();
         }
         
         private void MoveForward()
         {
-            if (!_mainNumberCollision.IsReducingNumbers && !_mainNumberCollision.IsRunOutOfNumbers)
+            if (!_mainNumberCollisionController.IsReducingNumbers && !_mainNumberCollisionController.IsRunOutOfNumbers)
             {
                 Vector3 targetPosition = transform.position;
                 targetPosition.z += _forwardSpeed * Time.deltaTime;
